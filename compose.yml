@@ -1,0 +1,82 @@
+version: "3.8"
+
+services:
+  php:
+    container_name: container-php
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - .:/var/www
+     #- ./agenda:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - setup-network
+
+  nginx:
+    container_name: container-nginx
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '8989:80'
+    volumes:
+      - .:/var/www
+     #- ./agenda:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - setup-network
+
+  mysql:
+    container_name: container-mysql
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: savecon
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    ports:
+      - "6033:3306"
+    volumes:
+      - setup-data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - setup-network
+
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    restart: always
+    container_name: container-phpmyadmin
+    environment:
+      PMA_HOST: container-mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    ports:
+      - 8081:80
+    depends_on:
+      - mysql
+    networks:
+      - setup-network
+
+  redis:
+    container_name: container-redis
+    build:
+      context: ./docker/redis
+      dockerfile: Dockerfile
+    ports:
+      - '6379:6379'
+
+networks:
+  setup-network:
+    driver: bridge
+
+volumes:
+  setup-data:
+    driver: local

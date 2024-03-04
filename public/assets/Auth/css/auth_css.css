@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: 'Poppins', sans-serife;  
+}
+body
+{
+  background-color: rgb(251, 248, 248);
+  color: #3c3c3c;
+}
+.menu
+{ 
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  top:0;
+  left:0;
+  right: 0;
+  margin: 0 auto;
+  padding:4px 9px;
+  box-sizing: border-box;
+  background: #0839f9;
+}
+.logo
+{
+  float: left;
+  font-weight: bold;
+  color: white;
+  font-size: 1.6em;
+  margin-right: 32px;
+  margin-left: 17px;
+}
+.logo span
+{
+  font-family: 'Audiowide', cursive;
+}
+.menu nav
+{
+  width: 320px;
+  height:100vh;
+  background: #0839f9;
+  border-top-left-radius: 15px;
+  position: absolute;
+  display: none;
+  top: 48px;
+  right: 0%;
+  transition: 0.5s;
+  z-index: 1;
+  text-align: center;
+}
+.menu nav ul
+{
+  margin-top: 40px;
+}
+.menu nav ul li a
+{
+  color: #3c3c3c;
+  padding: 4px;
+  background: white;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  display: block;
+  width: 150px;
+  margin: 25px auto;
+}
+.menu nav ul li a:hover
+{
+  background:#0135ff;
+  color: #fff;
+  border: 1px solid #fff;
+}
+.container_button_icon{
+  display: flex;
+  width: 156px;
+  justify-content: space-between;
+}
+.container_button_icon a
+{
+  text-align: center;
+  font-size: 0.7em;
+  padding: 6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 22px;
+  border: 1px solid #fff;
+  color: #0135ff;
+  background: #fff;
+}
+.container_button_icon a:hover{
+  color: #fff;
+  background: #0135ff;
+}   
+.container_menu_icon
+{
+  position: relative;
+  width: 35px;
+  height: 30px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.container_menu_icon span {
+	background-color:#fff;
+	width: 25px;
+  height: 3px;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  margin: 0 auto;
+  transform: translate(-50%,-50%);
+  transition: 0.3s;
+}
+.container_menu_icon span:before {
+	content: '';
+	position: absolute;
+	top: -8px;
+	background-color:#fff;
+	height: 3px;
+	width: 25px;
+	transition: 0.3s;
+}
+.container_menu_icon span:after {
+	content: '';
+	position: absolute;
+	top: 8px;
+	background-color:#fff;
+	height: 3px;
+	width: 25px;
+	transition: 0.3s;
+}
+.container_menu_icon.active span { background-color: transparent; }
+.container_menu_icon.active span:before { transform: rotate(45deg);top: 0; }
+.container_menu_icon.active span:after { transform: rotate(-45deg);top: 0; }
+
+
+
+/********************* FORM CADASTRO E FORM LOGIN *****************************/
+
+.container
+{
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.container_form
+{
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid #d6d6d6;
+  border-radius: 10px;
+  color: #3c3c3c;
+  background-color: #ffff;
+  padding: 10px;
+}
+/* loading */
+.container_lds-ellipsis {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -6px;
+  display: none;
+}
+.lds-ellipsis {
+  display: block;
+  position: relative;
+  width: 81px;
+  height: 40px;
+  margin: 0 auto;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 15px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #0135ff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(5) {
+  left: 60px;
+  animation: lds-ellipsis3 0.6s infinite;
+  background:green;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+.open_loading
+{
+   display: block;
+}
+
+
+
+
+.modal_validate
+{ 
+  display: none;
+  background: #ff000091;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9em;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.container_form h1
+{ 
+  padding-top: 30px;
+  padding-bottom: 35px;
+  text-align: center;
+  font-size: 1.2em;
+}
+.container_form input[type=text], .container_form input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0 15px;
+  display: inline-block;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+textarea, input:focus{
+    outline: none;
+}
+.button {
+  width: 100%;
+  font-size: 1em;
+  background: #0839f9;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.button:hover {
+  background: #37a3eb;
+}
+
+/********************* FOOTER *****************************/
+.footer
+{
+  background: black;
+  color: white;
+}
+.container_info_footer
+{
+  padding: 15px;
+  text-align: center;
+}
+
+
+@media only screen and (min-width:750px){
+
+  /********************* FORM CADASTRO E FORM LOGIN *****************************/
+
+  .container {
+    padding-bottom: 200px;
+  }
+
+  /*********** MENU ************/ 
+  .container_button_icon{
+    width: 200px;
+  }
+  .container_button_icon a {
+    font-size: 0.9em;
+    padding:6px;
+  }
+  .container_menu_icon{
+    margin-top: 4px;
+  }
+  
+  /********** FORM CADASTRO / FORM ALTERAÇÃO *****************/
+
+  .container_form
+  {
+    width: 400px;
+    padding: 20px;
+  }
+  .container_form h1
+  { 
+    font-size: 1.6em;
+  }
+
+
+}  
